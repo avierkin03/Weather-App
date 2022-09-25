@@ -53,3 +53,9 @@ li {
 .search-form {
   margin-bottom: 20px;
 }
+
+.code-ref{
+  margin: -20px auto;
+  max-width: 600px;
+  font-size: 14px;
+}
