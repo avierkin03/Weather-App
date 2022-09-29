@@ -50,11 +50,20 @@ function searchCity(city) {
 
 function displayWeatherCondition(response) {
   celsiusTemperature = response.data.main.temp;
-  document.querySelector("#city").innerHTML = response.data.name;
-  document.querySelector("#temperature").innerHTML = Math.round(celsiusTemperature);
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-  document.querySelector("#wind").innerHTML = Math.round(response.data.wind.speed);
-  document.querySelector("#description").innerHTML = response.data.weather[0].main;
+  let cityElement = document.querySelector("#city");
+  let temperatureElement =  document.querySelector("#temperature");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind");
+  let description = document.querySelector("#description");
+  let iconElement =  document.querySelector("#icon");
+
+  cityElement.innerHTML = response.data.name;
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+  humidityElement.innerHTML = response.data.main.humidity;
+  windElement.innerHTML = Math.round(response.data.wind.speed);
+  description.innerHTML = response.data.weather[0].main;
+  iconElement.setAttribute("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 let searchForm = document.querySelector("#search-form");
