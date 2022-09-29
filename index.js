@@ -1,19 +1,6 @@
-//Converting to Fahrenheit and to Celsius
-function convertToFahrenheit(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = 66;
-}
-
-function convertToCelsius(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = 19;
-}
-
-
 //Showing current date and time
-function formatDate(date) {
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
   let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
@@ -23,16 +10,14 @@ function formatDate(date) {
     minutes = `0${minutes}`;
   }
 
-  let dayIndex = date.getDay();
-  let days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-  let day = days[dayIndex];
-
+  let days = ["Sunday","Monday","Tuesday","Wednesday", "Thursday","Friday","Saturday"];
+  let day = days[date.getDay()];
   return `${day} ${hours}:${minutes}`;
 }
 
-let dateElement = document.querySelector("#date");
-let currentTime = new Date();
-dateElement.innerHTML = formatDate(currentTime);
+// let dateElement = document.querySelector("#date");
+// let currentTime = new Date();
+// dateElement.innerHTML = formatDate(currentTime);
 
 
 //Showing the city that was chosen by a user and weather in it
@@ -43,13 +28,14 @@ function handleSubmit(event) {
 }
 
 function searchCity(city) {
-  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+  let apiKey = "1fcf98592eac8a01745973aaedd65073"; /*5f472b7acba333cd8a035ea85a0d4d4c - not mine; 1fcf98592eac8a01745973aaedd65073-mine*/
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeatherCondition);
 }
 
 function displayWeatherCondition(response) {
   celsiusTemperature = response.data.main.temp;
+  let dateElement = document.querySelector("#date");
   let cityElement = document.querySelector("#city");
   let temperatureElement =  document.querySelector("#temperature");
   let humidityElement = document.querySelector("#humidity");
@@ -57,6 +43,7 @@ function displayWeatherCondition(response) {
   let description = document.querySelector("#description");
   let iconElement =  document.querySelector("#icon");
 
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
   cityElement.innerHTML = response.data.name;
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
   humidityElement.innerHTML = response.data.main.humidity;
