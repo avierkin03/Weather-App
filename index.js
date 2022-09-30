@@ -15,10 +15,6 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
-// let dateElement = document.querySelector("#date");
-// let currentTime = new Date();
-// dateElement.innerHTML = formatDate(currentTime);
-
 
 //Showing the city that was chosen by a user and weather in it
 function handleSubmit(event) {
