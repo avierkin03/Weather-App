@@ -2,6 +2,7 @@
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
+  console.log(timestamp);
   if (hours < 10) {
     hours = `0${hours}`;
   }
@@ -60,16 +61,13 @@ function getCurrentLocation(event) {
 }
 
 function searchLocation(position) {
-  let apiKey = "a867e25f2d83db579421a57fd8e937ec";
+  let apiKey = "1fcf98592eac8a01745973aaedd65073";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeatherCondition);
 }
 
 let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", getCurrentLocation);
-
-searchCity("New York");
-
 
 
 //Converting Celsius to Fahrenheit and vice versa
@@ -97,3 +95,6 @@ fahrenheitLink.addEventListener("click", showFahrenheitTemperature);
 
 let celsiusLink = document.querySelector("#celcius-link");
 celsiusLink.addEventListener("click", showCelsiusTemperature);
+
+//The first call of function searchCity()
+searchCity("New York");
