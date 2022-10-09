@@ -1,63 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
-         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-         <link rel="stylesheet" href="style.css" />
-         <title>Weather App</title>
-    </head>
-  
-    <body>
-        <div class="container">
-            <div class="weather-app">
-                <form class="search-form" id="search-form">
-                    <div class="row">
-                        <div class="col-6">
-                            <input type="search" placeholder="Type a city.." autofocus="on" autocomplete="off" id="city-input" class="form-control shadow-sm"/>
-                        </div>
-                        <div class="col-3">
-                            <input type="submit" value="Search" class="form-control btn btn-primary shadow-sm w-100"/>
-                        </div>
-                        <div class="col-3">
-                            <button class="btn btn-success w-100" id="current-location-button">Current</button>
-                        </div>
-                    </div>
-                </form>
-                <h1 id="city"></h1>
-                <ul>
-                    <li id="date"></li>
-                    <li id="description"></li>
-                </ul>
-                <div class="row">
-                    <div class="col-6">
-                        <div class="clearfix">
-                            <img src="" id="icon" alt="" class="float-left weather-icon">
-                            <div class="float-left">
-                                <span class="temperature" id="temperature"></span>
-                                <span class="units">
-                                    <a href="#" id="celcius-link" class="active">°C</a>|<a href="#" id="fahrenheit-link">°F</a>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <ul>
-                            <li>Humidity: <span id="humidity"></span>%</li>
-                            <li>Wind: <span id="wind"></span> km/h</li>
-                        </ul>
-                    </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <link rel="stylesheet" href="style.css" />
+    <title>Weather App</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="weather-app-wrapper">
+        <div class="weather-app">
+          <form id="search-form" class="mb-3">
+            <div class="row">
+                <div class="col-6">
+                    <input type="search" placeholder="Type a city.." autofocus="on" autocomplete="off" id="city-input" class="form-control shadow-sm"/>
                 </div>
-
-                <div class="weather-forecast" id="forecast"></div>
-
+                <div class="col-3">
+                    <input type="submit" value="Search" class="form-control btn btn-primary shadow-sm w-100"/>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-success w-100" id="current-location-button">Current</button>
+                </div>
             </div>
-            <div class="code-ref">
-                <a href="https://github.com/avierkin03/Weather-App.git" target="_blank">Open-source code</a> by Liza Krill
+          </form>
+          <div class="overview">
+            <h1 id="city"></h1>
+            <ul>
+              <li>Last updated: <span id="date"></span></li>
+              <li id="description"></li>
+            </ul>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <div class="clearfix weather-temperature">
+                <img src="" alt="Clear" id="icon" class="float-left" />
+                <div class="float-left">
+                  <strong id="temperature"></strong>
+                  <span class="units"><a href="#" id="celsius-link" class="active">°C</a>|<a href="#" id="fahrenheit-link">°F</a></span>
+                </div>
+              </div>
             </div>
+            <div class="col-6">
+              <ul>
+                <li>Humidity: <span id="humidity"></span>%</li>
+                <li>Wind: <span id="wind"></span> km/h</li>
+              </ul>
+            </div>
+          </div>
+          <div class="weather-forecast" id="forecast"></div>
         </div>
-        <script src="index.js"></script>
-    </body>
+        <small>
+            <a href="https://github.com/avierkin03/Weather-App.git" target="_blank">Open-source code</a> by Liza Krill
+        </small>
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
 </html>
